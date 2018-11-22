@@ -29,7 +29,7 @@ class Plato(models.Model):
 	    ('Activo', 'Activo'),
 	    ('Inactivo', 'Inactivo'),
 	    )
-    Estado = models.CharField(
+    estado = models.CharField(
 	    max_length=10,
 	    choices=Estados,
 	    default='Activo',
@@ -117,9 +117,6 @@ class Encargado(models.Model):
 class Asignacion(models.Model):
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
     plato = models.ForeignKey(Plato, on_delete=models.CASCADE)
-    Boleta = models.CharField(max_length=200)
-    
-
     def __str__(self):
         return '%s %s %s' % (self.menu, self.plato, self.boleta)
 
@@ -127,11 +124,8 @@ class Asignacion(models.Model):
 
 class PersonalOperativo(models.Model):
     Primer_Nombre = models.CharField(max_length=200)
-    Segundo_Nombre = models.CharField(max_length=200, default='N/A')
     Primer_Apellido = models.CharField(max_length=200)
-    Segundo_Apellido = models.CharField(max_length=200, default='N/A')
     Telefono_Casa = models.CharField(max_length=200, blank=True, null=True)
-    Telefono_Celular = models.CharField(max_length=200, blank=True, null=True)
     Direccion = models.CharField(max_length=128)
     Dpi = models.CharField(max_length=20)
     Tipos = (
@@ -148,20 +142,6 @@ class PersonalOperativo(models.Model):
     Fecha_Nacimiento = models.DateField(
         blank=True, null=True)
     Lugar_Nacimiento = models.CharField(max_length=128)
-    hijos = (
-    ('sin', 'Sin Hijos'),
-    ('1', '1'),
-    ('2', '2'),
-    ('3', '3'),
-    ('4', '4'),
-    ('5', '5'),
-    ('mas', 'Mas de 5...'),
-    )
-    No_Hijos= models.CharField(
-        max_length=20,
-        choices=hijos,
-        default='sin',
-    )
     Nit = models.CharField(max_length=20)
     Igss = models.CharField(max_length=30)
     Fecha_Inicio_Labores = models.DateField(

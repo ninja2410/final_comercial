@@ -1,0 +1,80 @@
+{% extends 'restaurant/base.html' %}
+{% block content %}
+<div class="basic-form-area mg-b-15">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+        <div class="sparkline8-list mt-b-30">
+          <div class="sparkline8-hd">
+            <div class="main-sparkline8-hd">
+              <h1>Ingresar Platos</h1>
+            </div>
+          </div>
+
+          <!---form--->
+          <form action="{% url 'nuevo_plato' %}" method="POST" class="post-form">
+            {% csrf_token %}
+            {% if form.errors %}
+            <div class="alert-icon shadow-inner wrap-alert-b">
+              <div class="alert alert-danger alert-mg-b alert-st-four" role="alert">
+                <i class="fa fa-window-close edu-danger-error admin-check-pro" aria-hidden="true"></i>
+                <i class="fa fa-times edu-danger-error admin-check-pro" aria-hidden="true"></i>
+                <p class="message-mg-rt"><strong>
+                    <center>{{ form.errors }}</center>
+                  </strong> </p>
+              </div>
+            </div>
+            {% endif %}
+
+            <div class="form-group-inner">
+              <div class="row">
+                <!---codigo  --->
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                  <label class="login2 pull-right pull-right-pro" for="{{ form.Codigo.id_for_label }}"> NOMBRE: </label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                  <div class="input-mark-inner mg-b-22">
+
+                    {{form.nombre}}
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                  <label class="login2 pull-right pull-right-pro" for=" {{ form.estado.id_for_label }}">Estado Del Plato:</label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                  <div class="form-select-list">
+                    {{form.estado}}
+                  </div>
+
+                </div>
+              </div>
+
+
+
+
+              <div class="form-group-inner">
+                <div class="login-btn-inner">
+                  <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-9">
+                      <div class="login-horizental cancel-wp pull-left form-bc-ele">
+                        <button class="btn btn-white" type="submit">Guardar y Añadir Nuevo</button>
+                        <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Guardar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </form>
+          <!--- fin form :)--->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!---FIN FORMULLARIO ALUMNOS--->
+{% endblock %}
